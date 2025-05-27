@@ -9,11 +9,6 @@ This project is a Python-based web scraper that extracts project details from th
 - **Saves results to CSV** for easy analysis or reporting
 - **Robust error handling** and waits for dynamic content
 
-## 🖥️ Requirements
-- Python 3.7+
-- Google Chrome browser
-- ChromeDriver (automatically managed by `webdriver-manager`)
-
 Install dependencies:
 ```bash
 pip install -r requirements.txt
