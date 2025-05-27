@@ -10,14 +10,12 @@ from selenium.webdriver.support import expected_conditions as EC
 class OdishaReraScraper:
     def __init__(self):
         chrome_options = Options()
-        # chrome_options.add_argument("--headless")  # Uncomment for headless mode
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option('useAutomationExtension', False)
-        # Block geolocation requests
         prefs = {"profile.default_content_setting_values.geolocation": 2}
         chrome_options.add_experimental_option("prefs", prefs)
 
@@ -53,7 +51,6 @@ class OdishaReraScraper:
             for i in range(min(6, len(cards))):
                 try:
                     card = self.driver.find_elements(By.CSS_SELECTOR, ".card-body")[i]
-                    # Scroll to the card and click it
                     self.driver.execute_script("arguments[0].scrollIntoView(true);", card)
                     time.sleep(1)
                     card.click()
@@ -94,7 +91,6 @@ class OdishaReraScraper:
                 'GST No': 'Not Found'
             }
 
-            # Try to click on Promoter Details tab
             promoter_tab_selectors = [
                 "//button[contains(text(), 'Promoter')]",
                 "//a[contains(text(), 'Promoter')]",
